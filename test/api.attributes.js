@@ -118,7 +118,7 @@ describe('$(...)', function() {
     });
 
     it('(valid key) : valid prop should get value', function() {
-      expect(checkbox.prop('checked')).to.be.ok();
+      expect(checkbox.prop('checked')).to.equal(true);
       checkbox.css('display', 'none');
       expect(checkbox.prop('style').display).to.equal('none');
       expect(checkbox.prop('tagName')).to.equal('INPUT');
@@ -131,11 +131,11 @@ describe('$(...)', function() {
     });
 
     it('(key, value) : should set prop', function() {
-      expect(checkbox.prop('checked')).to.be.ok();
+      expect(checkbox.prop('checked')).to.equal(true);
       checkbox.prop('checked', false);
-      expect(checkbox.prop('checked')).to.not.be.ok();
+      expect(checkbox.prop('checked')).to.equal(false);
       checkbox.prop('checked', true);
-      expect(checkbox.prop('checked')).to.be.ok();
+      expect(checkbox.prop('checked')).to.equal(true);
     });
 
     it('(map) : object map should set multiple props', function() {
@@ -144,16 +144,16 @@ describe('$(...)', function() {
         checked: false
       });
       expect(checkbox.prop('id')).to.equal('check');
-      expect(checkbox.prop('checked')).to.not.be.ok();
+      expect(checkbox.prop('checked')).to.equal(false);
     });
 
     it('(key, function) : should call the function and update the prop with the return value', function() {
       checkbox.prop('checked', function(index, value) {
         expect(index).to.equal(0);
-        expect(value).to.be.ok();
+        expect(value).to.equal(true);
         return false;
       });
-      expect(checkbox.prop('checked')).to.not.be.ok();
+      expect(checkbox.prop('checked')).to.equal(false);
     });
 
     it('(key, value) : should support chaining after setting props', function() {
